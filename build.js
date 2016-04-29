@@ -155,3 +155,5 @@ b.add('./public/angular/src/app.js')
 
 
 console.timeEnd('build.js');
+
+process.exit();
