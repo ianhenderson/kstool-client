@@ -12,12 +12,14 @@
     "build:prod": "NODE_ENV=prod npm run build",
     "build": "npm run build:angular && npm run build:es6",
     "clean": "find ./public -type d -name 'dist' | xargs rm -rf",
+    "dist:gadd": "find ./public -type d -name 'dist' | xargs git add",
+    "dist:gcommit": "git commit -m 'Autocommit dist/'",
     "dev": "nodemon",
     "postinstall": "npm run build"
   },
   "config": {
     "ghooks": {
-        "pre-commit": "npm run build:prod"
+        "pre-commit": "npm run build:prod && npm run dist:gadd"
     }
   },
   "repository": {
