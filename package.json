@@ -11,6 +11,7 @@
     "build:dev": "npm run build:angular && npm run build:es6-dev",
     "build:prod": "NODE_ENV=prod npm run build",
     "build": "npm run build:angular && npm run build:es6",
+    "clean": "find ./public -type d -name 'dist' | xargs rm -rf",
     "dev": "nodemon",
     "postinstall": "npm run build"
   },
