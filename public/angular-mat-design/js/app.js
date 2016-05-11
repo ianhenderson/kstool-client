@@ -4,7 +4,7 @@ angular.module('KSTool', ['ui.router', 'ngMaterial', 'ngSanitize'])
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider){
 
-    // Interceptor to redirect to /login upon errors due to no session
+    // Interceptor to redirect to /login upon errors due to no session.
     $httpProvider.interceptors.push(function($q, $injector){
 
         return {
@@ -19,7 +19,7 @@ angular.module('KSTool', ['ui.router', 'ngMaterial', 'ngSanitize'])
 
                 return $q.reject(rejection);
             }
-       }; 
+       };
     });
     $stateProvider
         .state('login', {
@@ -62,7 +62,7 @@ angular.module('KSTool', ['ui.router', 'ngMaterial', 'ngSanitize'])
 })
 .run(function($rootScope, $location, LocalStorage, AuthService){
     // Listener that checks on each state change whether or not we have an auth token. If we don't, redirect to /login.
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){ 
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
         var isLoggedIn = AuthService.validate();
 
         if (!isLoggedIn) {
@@ -70,8 +70,8 @@ angular.module('KSTool', ['ui.router', 'ngMaterial', 'ngSanitize'])
             return;
         }
 
-        // If trying to go to /login (while logged in already), 
-        // or coming from /login (just finished AuthService.oAuthAuthorize), 
+        // If trying to go to /login (while logged in already),
+        // or coming from /login (just finished AuthService.oAuthAuthorize),
         // or navigating to the base URL (awesome.com/)
         // go /home
         if (toState.name === 'login' || fromState.name === 'login' || !toState.url) {
